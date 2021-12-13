@@ -55,3 +55,6 @@ source $DF_USER/custom.zsh
 
 # Load changes specific to this local environment.
 source ~/extra.zsh
+
+# Load aliases
+source $DF_USER/aliases.zsh

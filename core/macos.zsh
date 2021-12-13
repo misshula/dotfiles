@@ -1,5 +1,7 @@
 # Set up OSX specific configs
 
+export PATH=/opt/homebrew/bin:$PATH
+
 case $ZSH_HOST_OS in
 	darwin*)
 
@@ -9,7 +11,7 @@ case $ZSH_HOST_OS in
 	export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 	export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 	export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
-	alias ls='gls --color=auto'
+	# alias ls='gls --color=auto'
 
 	# Aliases
 	alias stfu="osascript -e 'set volume output muted true'"

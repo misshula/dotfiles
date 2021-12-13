@@ -13,4 +13,4 @@
 # try to avoid disabling the cache unless you have no other choice.
 
 # Staples theme: https://github.com/dersam/staples
-antigen theme dersam/staples staples
+antigen theme candy

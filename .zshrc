@@ -58,3 +58,6 @@ source ~/extra.zsh
 
 # Load aliases
 source $DF_USER/aliases.zsh
+
+# Load `try` helper (optional)
+eval "$(ruby ~/.local/try.rb init ~/src/tries)"

@@ -1,52 +1,39 @@
-Opinionated dotfiles starter template - compatible with MacOS and Spin.
+David Misshula’s dotfiles (macOS + Spin-compatible)
 
-Uses [oh-my-zsh](https://ohmyz.sh/) with [Antigen](https://github.com/zsh-users/antigen) to manage dependencies and themes.
-Default theme is [Staples](https://github.com/dersam/staples).
+Uses `zsh` with [Antigen](https://github.com/zsh-users/antigen) to manage [oh-my-zsh](https://ohmyz.sh/) plugins and themes.
+Theme is set in `personal/antigen_bundles.zsh` (currently `candy`).
 
-### Installation
-1. Clone the repo to `~/dotfiles`:
-```
-git clone https://github.com/Shopify/dotfiles-starter-template.git ~/dotfiles
-```
-2. Run `install.sh`. This will symlink configs and .zshrc, overwriting anything you already have.
-3. Open a new terminal, or `exec zsh`. Antigen bundles will be installed and you should be ready to go.
+**First-Time Install (new Mac)**
+- Install Xcode Command Line Tools (for `git`): `xcode-select --install`
+- Optional but recommended: install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+- Optional packages used by this setup:
+  - `brew install coreutils` (provides `gdircolors` for custom `dircolors`)
+  - `brew install ripgrep` (better search; powers the `ripgrep` plugin)
+- Clone into `~/dotfiles`: `git clone https://github.com/misshula/dotfiles.git ~/dotfiles`
+- Run the installer: `~/dotfiles/install.sh`
+  - Symlinks `~/.zshrc`, `~/.gitconfig`, and `~/.gitignore_global` (overwrites existing files)
+  - Installs Antigen if missing
+- Start a new terminal or run `exec zsh`. Antigen will fetch plugins/theme on first launch.
 
-To make your own copy to save your customizations, create a personal Github repo called `dotfiles`, and push to it.
+**Spin Notes**
+- On Spin, `install.sh` moves the generated `~/.gitconfig` to `~/.gitconfig.local` and links the repo’s `~/.gitconfig`.
+- Installs `ripgrep` via `apt-get` on Spin.
 
-### Update
-If you've made your own copy, you can still pull updates from the main repo by creating an `upstream` origin.
+**What’s Included**
+- `core/` framework files. Generally leave these unchanged.
+- `personal/` customizations that are yours to edit safely:
+  - `environment.zsh` – environment variables
+  - `macos.zsh` – macOS-specific tweaks
+  - `antigen_bundles.zsh` – extra plugins and theme
+  - `dircolors` – custom LS colors (uses `gdircolors` if present)
+  - `spin.zsh` – Spin-only tweaks
+  - `aliases.zsh` – personal aliases
+  - `custom.zsh` – loaded last; overrides take effect here
+  - `install.sh` – runs at the end of the main installer for any extra setup
 
-```
-git remote add upstream https://github.com/Shopify/dotfiles-starter-template
-```
+**Updating**
+- Pull latest from this repo in `~/dotfiles`: `git pull --rebase`
 
-Updating your copy can be done with:
-```
-git pull upstream main --rebase
-```
-
-### Customization
-The `core` directory contains the framework scripts. Don't alter these unless you want to leave the upgrade path and
-do your own thing.
-
-The `personal` directory is where all of your customizations should go. The main repo will not alter these significantly,
-so you should be able to easily resolve any merge conflicts during an update.
-
-#### Available customizations
-Files are listed in the order they are loaded. Conflicts between files, such as
-environment variable definitions, will be resolved by "last definition wins".
-
-Load order can be seen in `.zshrc`.
-
-- `environment.zsh`: Define any environment variables you always want.
-- `macos.zsh`: Customizations that should only be run on MacOS.
-- `antigen_bundles.zsh`: Define additional zsh plugins to include. Your theme selection should be set here as well (default is Staples).
-- `dircolors`: Define a custom dircolors file. Optional, falls back to system default.
-- `spin.zsh`: Customizations that should only be applied to Spin environments.
-- `custom.zsh`: Customizations that should apply everywhere. This is the LAST file
-loaded, so any conflicting changes made here will override any previous files.
-
-#### Custom install
-`personal/install.sh` is a special case. It is run as part of the `install.sh` script, and should be where you put
-any customizations around initial setup and installation. For example, if you want to symlink a config from `personal`
-into your home directory, that's where you'd run that command.
+**Tips**
+- `~/.zshrc` is a symlink to this repo; edit files here and reload the shell.
+- Per-machine tweaks can go in `~/extra.zsh` (untracked).

@@ -59,4 +59,6 @@ source ~/extra.zsh
 # Load aliases
 source $DF_USER/aliases.zsh
 
+eval "$(try init ~/src/tries)"
+
 export PATH="$HOME/.local/bin:$PATH"

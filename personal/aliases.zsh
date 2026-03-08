@@ -13,3 +13,7 @@ alias gri='git rebase -i'
 alias gr='git rebase'
 alias gl='git log'
 alias gunt='git clean -f -X'
+
+# Tools
+alias oc='opencode'
+alias cc='claude --dangerously-skip-permissions'

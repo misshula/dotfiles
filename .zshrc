@@ -61,3 +61,7 @@ source $DF_USER/aliases.zsh
 
 # Load `try` helper (optional)
 eval "$(ruby ~/.local/try.rb init ~/src/tries)"
+export PATH="$HOME/.local/bin:$PATH"
+eval "$(ruby ~/.local/try.rb init ~/src/tries)"
+eval "$(ruby ~/.local/try.rb init ~/src/tries)"
+eval "$(ruby ~/.local/try.rb init ~/src/tries)"
